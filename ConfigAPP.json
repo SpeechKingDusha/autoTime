@@ -1,0 +1,8 @@
+{
+  "NameFileConfigTZ": "Configuration.json",
+  "NameFileConfigTS": "ConfigurationTS.json",
+  "NameProcessTZ": "autoTimeZonePortable.exe",
+  "NameProcessTS": "autoTimeSheetPortable.exe",
+  "PathBin": "./bin/",
+  "PrefixUserNameTS": "Bel-main\\"
+}

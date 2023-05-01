@@ -1,0 +1,88 @@
+﻿<Window x:Class="autoTime.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:autoTime.Views"
+        mc:Ignorable="d"
+        Title="Auto Time" Height="600" Width="800" MinHeight="500" MinWidth="750">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*"  />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0"  Margin="20,20,20,20" >
+            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center">
+            <Run FontSize="20" Foreground="Red" FontWeight="Bold">Time Zone</Run>
+            </TextBlock>
+            <StackPanel  Background="LightGray" Margin="0,10,0,10" >
+                <TextBlock TextWrapping="Wrap" Padding="10,10,10,10" >
+                <Run FontSize="11" Foreground="Black">Автоматическое заполнение рабочих часов в приложении Time Zone (Amdocs). </Run>
+                </TextBlock>
+            </StackPanel>
+            <GroupBox Header="Конфигурация" Padding="5">                 
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label>Email</Label>
+                        <TextBox Margin="5,5,5,5" Height="20" Width="250"/>
+                    </StackPanel>
+                    <Label FontSize="13" FontWeight="Bold">Выходные:</Label>
+                    <WrapPanel Orientation="Horizontal" Margin="0,0,50,10">
+                        <CheckBox Margin="5,5,5,5">Воскресение</CheckBox>
+                        <CheckBox Margin="5,5,5,5">Понедельник</CheckBox>
+                        <CheckBox Margin="5,5,5,5">Вторник</CheckBox>
+                        <CheckBox Margin="5,5,5,5">Среда</CheckBox>
+                        <CheckBox Margin="5,5,5,5">Четверг</CheckBox>
+                        <CheckBox Margin="5,5,5,5">Пятница</CheckBox>
+                        <CheckBox Margin="5,5,5,5">Суббота</CheckBox>
+                    </WrapPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,80,0">
+                        <Label Margin="0,0,25,0">Начало рабочего дня</Label>
+                        <TextBox Width="20" Height="20" MaxLength="2" HorizontalAlignment="Stretch"/>
+                        <Label>:</Label>
+                        <TextBox Width="20" Height="20"  MaxLength="2" HorizontalAlignment="Stretch"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Margin="0,0,25,0">Рабочий день (часов)</Label>
+                        <TextBox Width="20" Height="20" MaxLength="2"  />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label  Margin="0,0,15,0">Рабочая неделя (часов)</Label>
+                        <TextBox Width="50" Height="20"/>
+                    </StackPanel>
+
+                    <CheckBox Margin="0,15,0,0">Тестовый режим</CheckBox>
+                    <Button Width="80" Margin="3">Сохранить</Button>
+                </StackPanel>
+            </GroupBox>
+            <Button Content="START"  FontWeight="Bold" Margin="0,50,0,0" />
+        </StackPanel>
+        <StackPanel Grid.Column="1" Margin="20,20,20,20" >
+            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center">
+            <Run FontSize="20" Foreground="Red" FontWeight="Bold">Time Sheet</Run>
+            </TextBlock>
+            <GroupBox Header="Конфигурация" Padding="5">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label>Username</Label>
+                        <TextBox Margin="5,5,5,5" Height="20" Width="250" Name="username"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label>Password</Label>
+                        <TextBox  Margin="9,5,5,5" Height="20" Width="250" Name="password" IsEnabled="False"/>
+                    </StackPanel>
+                   
+
+                    <CheckBox Margin="0,15,0,0">Тестовый режим</CheckBox>
+                    <Button Width="80" Margin="3">Сохранить</Button>
+                </StackPanel>
+            </GroupBox>
+            <StackPanel  Background="LightGray" Margin="0,10,0,10" >
+                <TextBlock TextWrapping="Wrap" Padding="10,10,10,10" >
+                <Run FontSize="11" Foreground="Black">Автоматическое заполнение рабочих часов в приложении Time Sheet (BI-Telco). </Run>
+                </TextBlock>
+            </StackPanel>
+            <Button Background="Gray" Content="START" Foreground="White" FontWeight="Bold"  Margin="0,50,0,0"/>
+        </StackPanel>
+    </Grid>
+</Window>
