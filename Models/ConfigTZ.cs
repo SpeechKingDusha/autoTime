@@ -52,8 +52,12 @@ namespace autoTime.Models
             return configTZ;
         }
 
-        public void saveToFile<ConfigTZ> (ConfigAPP configAPP, ConfigTZ configTZ)
+        void ISavable.saveToFile(ConfigAPP configAPP)
         {
+            ConfigTZ configTZ = new ConfigTZ() { Email = Email, Holidays = Holidays, 
+                                                 StartHoursDay = StartHoursDay, HoursDay = HoursDay, 
+                                                 HoursWeekDay = HoursWeekDay, isTestedMode = isTestedMode };
+
             using (StreamWriter writer = new StreamWriter(configAPP.PathBin + configAPP.NameFileConfigTZ, false))
             {
                 try
@@ -64,7 +68,6 @@ namespace autoTime.Models
                 catch(Exception ex) { Console.WriteLine(ex); }
             }
         }
-
     }
 
 }

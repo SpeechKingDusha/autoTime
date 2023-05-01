@@ -21,6 +21,9 @@ namespace autoTime.ViewModels
         public MainWindowVM() { 
             ConfigAPP configAPP = ConfigAPP.initialize();
             configTZ = new ConfigTZ().readFromFile(configAPP);
+            ISavable config = configTZ;
+            config.saveToFile(configAPP);
+
         }
 
     }

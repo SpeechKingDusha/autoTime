@@ -8,6 +8,6 @@ namespace autoTime.Models
 {
     internal interface ISavable
     {
-        void saveToFile<T>(ConfigAPP configAPP, T configTime );
+        void saveToFile(ConfigAPP configAPP, ISavable config );
     }
 }

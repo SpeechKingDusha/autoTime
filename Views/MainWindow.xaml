@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:autoTime.Views"
         mc:Ignorable="d"
         Title="Auto Time" Height="600" Width="800" MinHeight="500" MinWidth="750">
-    <Grid>
+     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*"  />
