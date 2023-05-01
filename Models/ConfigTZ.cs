@@ -13,7 +13,7 @@ using System.Runtime.CompilerServices;
 
 namespace autoTime.Models
 {
-    public class ConfigTZ: INotifyPropertyChanged, ISavable
+    public class ConfigTZ: ISavable, INotifyPropertyChanged
     {
         public string Email { get; set; }
         public List<String> Holidays { get; set; }
@@ -30,7 +30,8 @@ namespace autoTime.Models
         }
 
         private ConfigTZ defaultConfig() { 
-        return new ConfigTZ() {Email="Example@amdocs.com", Holidays = new List<string>() {"Sunday","Saturday"}, StartHoursDay="8:30",HoursDay=8,HoursWeekDay=40, isTestedMode=true};
+        return new ConfigTZ() {Email="Example@amdocs.com", Holidays = new List<string>() {"Sunday","Saturday"}, 
+                               StartHoursDay="8:30",HoursDay=8,HoursWeekDay=40, isTestedMode=true};
         }
         public ConfigTZ readFromFile(ConfigAPP configAPP)
         {
