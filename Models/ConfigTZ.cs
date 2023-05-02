@@ -53,7 +53,7 @@ namespace autoTime.Models
             return configTZ;
         }
 
-        void ISavable.saveToFile(ConfigAPP configAPP)
+        public void saveToFile(ConfigAPP configAPP)
         {
             ConfigTZ configTZ = new ConfigTZ() { Email = Email, Holidays = Holidays, 
                                                  StartHoursDay = StartHoursDay, HoursDay = HoursDay, 

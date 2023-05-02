@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace autoTime.Models
 {
-    internal interface ISavable
+    public interface ISavable
     {
         void saveToFile(ConfigAPP configAPP);
     }
