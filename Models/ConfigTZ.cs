@@ -33,12 +33,25 @@ namespace autoTime.Models
         public bool[] isChekedDays {
             get {
                 Dictionary<string, bool> days = new Dictionary<string, bool>() { { "Sunday", false }, {"Monday", false }, {"Tuesday", false },
-                    {"Wednesday", false }, {"Thursday", false }, {"Friday", false }, {"Saturday", false } };
+                                                                                 {"Wednesday", false }, {"Thursday", false }, {"Friday", false }, {"Saturday", false } };
                 foreach (string holiday in Holidays) {
                     days[holiday] = true;
                 }
                 bool[] isChecked = days.Values.ToArray();  
                 return isChecked;
+            }
+            set {
+                Dictionary<int, string> days = new Dictionary<int, string>() { { 0, "Sunday" }, {1, "Monday"}, {2, "Tuesday"},
+                                                                               {3, "Wednesday"}, {4, "Thursday"}, {5, "Friday"}, {6, "Saturday"} };
+                List<string> holidaysRec = new List<string>();
+                for (int i = 0; i < isChekedDays.Length; ++i)
+                {
+                    if (isChekedDays[i])
+                    {
+                        holidaysRec.Add(days[i]);
+                    }
+                }
+                Holidays = holidaysRec;
             }
         }
 

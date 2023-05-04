@@ -13,14 +13,19 @@ namespace autoTime.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public ConfigTZ configTZ { get; set; }
+        public ConfigAPP configAPP { get; set; }
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
         public MainWindowVM() { 
-            ConfigAPP configAPP = ConfigAPP.initialize();
+            configAPP = ConfigAPP.initialize();
             configTZ = new ConfigTZ().readFromFile(configAPP);
+        }
+
+        public void SaveConfigToFile(ISavable configT) {
+            configT.saveToFile(configAPP);
         }
 
     }
