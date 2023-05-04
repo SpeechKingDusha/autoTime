@@ -6,8 +6,11 @@
         xmlns:local="clr-namespace:autoTime.ViewModels"
         mc:Ignorable="d"
         Title="Auto Time" Height="600" Width="800" MinHeight="500" MinWidth="750">
-    
-     <Grid>
+
+    <Window.DataContext>
+        <local:MainWindowVM/>
+    </Window.DataContext>
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*"  />
@@ -25,34 +28,34 @@
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label>Email</Label>
-                        <TextBox Margin="5,5,5,5" Height="20" Width="250"/>
+                        <TextBox Margin="5,5,5,5" Height="20" Width="250" Text="{Binding configTZ.Email}"/>
                     </StackPanel>
                     <Label FontSize="13" FontWeight="Bold">Выходные:</Label>
                     <WrapPanel Orientation="Horizontal" Margin="0,0,50,10">
-                        <CheckBox Margin="5,5,5,5">Воскресение</CheckBox>
-                        <CheckBox Margin="5,5,5,5">Понедельник</CheckBox>
-                        <CheckBox Margin="5,5,5,5">Вторник</CheckBox>
-                        <CheckBox Margin="5,5,5,5">Среда</CheckBox>
-                        <CheckBox Margin="5,5,5,5">Четверг</CheckBox>
-                        <CheckBox Margin="5,5,5,5">Пятница</CheckBox>
-                        <CheckBox Margin="5,5,5,5">Суббота</CheckBox>
+                        <CheckBox Margin="5,5,5,5" IsChecked="{Binding configTZ.isChekedDays[0]}">Воскресение</CheckBox>
+                        <CheckBox Margin="5,5,5,5" IsChecked="{Binding configTZ.isChekedDays[1]}">Понедельник</CheckBox>
+                        <CheckBox Margin="5,5,5,5" IsChecked="{Binding configTZ.isChekedDays[2]}">Вторник</CheckBox>
+                        <CheckBox Margin="5,5,5,5" IsChecked="{Binding configTZ.isChekedDays[3]}">Среда</CheckBox>
+                        <CheckBox Margin="5,5,5,5" IsChecked="{Binding configTZ.isChekedDays[4]}">Четверг</CheckBox>
+                        <CheckBox Margin="5,5,5,5" IsChecked="{Binding configTZ.isChekedDays[5]}">Пятница</CheckBox>
+                        <CheckBox Margin="5,5,5,5" IsChecked="{Binding configTZ.isChekedDays[6]}">Суббота</CheckBox>
                     </WrapPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,0,80,0">
                         <Label Margin="0,0,25,0">Начало рабочего дня</Label>
-                        <TextBox Width="20" Height="20" MaxLength="2" HorizontalAlignment="Stretch"/>
+                        <TextBox Width="20" Height="20" MaxLength="2" HorizontalAlignment="Stretch" Text="{Binding configTZ.hoursAndMin[0]}"/>
                         <Label>:</Label>
-                        <TextBox Width="20" Height="20"  MaxLength="2" HorizontalAlignment="Stretch"/>
+                        <TextBox Width="20" Height="20"  MaxLength="2" HorizontalAlignment="Stretch" Text="{Binding configTZ.hoursAndMin[1]}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Margin="0,0,25,0">Рабочий день (часов)</Label>
-                        <TextBox Width="20" Height="20" MaxLength="2"  />
+                        <TextBox Width="20" Height="20" MaxLength="2" Text="{Binding configTZ.HoursDay}" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label  Margin="0,0,15,0">Рабочая неделя (часов)</Label>
-                        <TextBox Width="50" Height="20"/>
+                        <TextBox Width="50" Height="20" Text="{Binding configTZ.HoursWeekDay}"/>
                     </StackPanel>
 
-                    <CheckBox Margin="0,15,0,0">Тестовый режим</CheckBox>
+                    <CheckBox Margin="0,15,0,0" IsChecked="{Binding configTZ.isTestedMode}">Тестовый режим</CheckBox>
                     <Button Width="80" Margin="3">Сохранить</Button>
                 </StackPanel>
             </GroupBox>

@@ -21,6 +21,26 @@ namespace autoTime.Models
         public int HoursDay { get; set; }
         public int HoursWeekDay { get; set; }
         public bool isTestedMode { get; set; }
+        public string[] hoursAndMin
+        {
+            get { return StartHoursDay.Split(':'); }
+            set {
+                if (value[0].Length == 1) value[0]=value[0].Insert(0, "0");
+                if (value[1].Length == 1) value[1] = value[1].Insert(0, "0");
+                StartHoursDay = value[0] + ":" + value[1]; 
+            }
+        }
+        public bool[] isChekedDays {
+            get {
+                Dictionary<string, bool> days = new Dictionary<string, bool>() { { "Sunday", false }, {"Monday", false }, {"Tuesday", false },
+                    {"Wednesday", false }, {"Thursday", false }, {"Friday", false }, {"Saturday", false } };
+                foreach (string holiday in Holidays) {
+                    days[holiday] = true;
+                }
+                bool[] isChecked = days.Values.ToArray();  
+                return isChecked;
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
@@ -69,6 +89,7 @@ namespace autoTime.Models
                 catch(Exception ex) { Console.WriteLine(ex); }
             }
         }
+        public string[] splitStartHoursDay()=> StartHoursDay.Split(':');
     }
 
 }
