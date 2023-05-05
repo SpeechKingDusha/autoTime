@@ -3,6 +3,6 @@
   "NameFileConfigTS": "ConfigurationTS.json",
   "NameProcessTZ": "autoTimeZonePortable.exe",
   "NameProcessTS": "autoTimeSheetPortable.exe",
-  "PathBin": "./bin/",
+  "PathBin": "bin/",
   "PrefixUserNameTS": "Bel-main\\"
 }

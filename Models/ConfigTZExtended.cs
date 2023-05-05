@@ -12,46 +12,39 @@ namespace autoTime.Models
 {
     public class ConfigTZExtended: ConfigTZ, INotifyPropertyChanged
     {
-        public string[] hoursAndMin
-        {
-            get { return base.StartHoursDay.Split(':'); }
-            set
-            {
-                //if (value[0].Length == 1) value[0] = value[0].Insert(0, "0");
-                //if (value[1].Length == 1) value[1] = value[1].Insert(0, "0");
-                //base.StartHoursDay = value[0] + ":" + value[1];
-                hoursAndMin = value;
-            }
-        }
-        public List<bool> isChekedDays
-        {
-            get
-            {
-                Dictionary<string, bool> days = new Dictionary<string, bool>() { { "Sunday", false }, {"Monday", false }, {"Tuesday", false },
-                                                                                 {"Wednesday", false }, {"Thursday", false }, {"Friday", false }, {"Saturday", false } };
-                foreach (string holiday in base.Holidays)
-                {
-                    days[holiday] = true;
-                }
-                List<bool> isChecked = days.Values.ToList();
-                return isChecked;
-            }
-            set
-            {
-                //Dictionary<int, string> days = new Dictionary<int, string>() { { 0, "Sunday" }, {1, "Monday"}, {2, "Tuesday"},
-                //                                                               {3, "Wednesday"}, {4, "Thursday"}, {5, "Friday"}, {6, "Saturday"} };
-                //List<string> holidaysRec = new List<string>();
-                //for (int i = 0; i < isChekedDays.Length; ++i)
-                //{
-                //    if (isChekedDays[i])
-                //    {
-                //        holidaysRec.Add(days[i]);
-                //    }
-                //}
-                //base.Holidays = holidaysRec;
-                isChekedDays = value;
-            }
-        }
+        public int hoursStartDay { get; set; }
+        public int minutesStartDay { get; set; }
+        public Dictionary<string, bool> areHolidays { get; set; } = new Dictionary<string, bool>() { { "Sunday", true }, {"Monday", false }, {"Tuesday", false },
+                                                                                 {"Wednesday", false }, {"Thursday", false }, {"Friday", false }, {"Saturday", true } };
+    //public List<bool> isChekedDays
+    //    {
+    //        get
+    //        {
+    //            Dictionary<string, bool> days = new Dictionary<string, bool>() { { "Sunday", false }, {"Monday", false }, {"Tuesday", false },
+    //                                                                             {"Wednesday", false }, {"Thursday", false }, {"Friday", false }, {"Saturday", false } };
+    //            foreach (string holiday in base.Holidays)
+    //            {
+    //                days[holiday] = true;
+    //            }
+    //            List<bool> isChecked = days.Values.ToList();
+    //            return isChecked;
+    //        }
+    //        set
+    //        {
+    //            //Dictionary<int, string> days = new Dictionary<int, string>() { { 0, "Sunday" }, {1, "Monday"}, {2, "Tuesday"},
+    //            //                                                               {3, "Wednesday"}, {4, "Thursday"}, {5, "Friday"}, {6, "Saturday"} };
+    //            //List<string> holidaysRec = new List<string>();
+    //            //for (int i = 0; i < isChekedDays.Length; ++i)
+    //            //{
+    //            //    if (isChekedDays[i])
+    //            //    {
+    //            //        holidaysRec.Add(days[i]);
+    //            //    }
+    //            //}
+    //            //base.Holidays = holidaysRec;
+    //            isChekedDays = value;
+    //        }
+    //    }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
@@ -94,19 +87,26 @@ namespace autoTime.Models
 
         public void saveToFile(ConfigAPP configAPP)
         {
-            if (hoursAndMin[0].Length == 1) hoursAndMin[0] = hoursAndMin[0].Insert(0, "0");
-            if (hoursAndMin[1].Length == 1) hoursAndMin[1] = hoursAndMin[1].Insert(0, "0");
-            string startHoursDay = hoursAndMin[0] + ":" + hoursAndMin[1];
+            StringBuilder startHoursDay = new StringBuilder(5);
+            if (hoursStartDay < 9) startHoursDay.Append("0");
+            startHoursDay.Append(hoursStartDay.ToString() + ":");
+            if (minutesStartDay < 9) startHoursDay.Append("0");
+            startHoursDay.Append(minutesStartDay.ToString());
 
-            Dictionary<int, string> days = new Dictionary<int, string>() { { 0, "Sunday" }, {1, "Monday"}, {2, "Tuesday"},
-                                                                           {3, "Wednesday"}, {4, "Thursday"}, {5, "Friday"}, {6, "Saturday"} };
+
+            //Dictionary<int, string> days = new Dictionary<int, string>() { { 0, "Sunday" }, {1, "Monday"}, {2, "Tuesday"},
+            //                                                               {3, "Wednesday"}, {4, "Thursday"}, {5, "Friday"}, {6, "Saturday"} };
             List<string> holidaysRec = new List<string>();
-            for (int i = 0; i < isChekedDays.Count; ++i)
-            {
-                if (isChekedDays[i])
-                {
-                    holidaysRec.Add(days[i]);
-                }
+            //for (int i = 0; i < isChekedDays.Count; ++i)
+            //{
+            //    if (isChekedDays[i])
+            //    {
+            //        holidaysRec.Add(days[i]);
+            //    }
+            //}
+            foreach (var day in areHolidays) {
+                if (day.Value) holidaysRec.Add(day.Key);
+            
             }
 
 
@@ -114,13 +114,13 @@ namespace autoTime.Models
             {
                 Email = Email,
                 Holidays = holidaysRec,
-                StartHoursDay = startHoursDay,
+                StartHoursDay = startHoursDay.ToString(),
                 HoursDay = HoursDay,
                 HoursWeekDay = HoursWeekDay,
                 isTestedMode = isTestedMode
             };
 
-            using (StreamWriter writer = new StreamWriter("bin/" + configAPP.NameFileConfigTZ, false))
+            using (StreamWriter writer = new StreamWriter(configAPP.PathBin + configAPP.NameFileConfigTZ, false))
             {
                 try
                 {

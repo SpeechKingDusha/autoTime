@@ -19,6 +19,7 @@ namespace autoTime.ViewModels
         //public ConfigTZ configTZ { get; set; }
         public ConfigAPP configAPP { get; set; }
         public ConfigTZExtended configTZExtended { get; set; }
+        
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
             if (PropertyChanged != null)
@@ -27,8 +28,8 @@ namespace autoTime.ViewModels
         public MainWindowVM() { 
             configAPP = ConfigAPP.initialize();
             configTZExtended = new ConfigTZExtended().readFromFile(configAPP);
-            configTZExtended.hoursStartDay = configTZExtended.StartHoursDay.Split(':')[0];
-            configTZExtended.minutesStartDay = configTZExtended.StartHoursDay.Split(':')[1];
+            configTZExtended.hoursStartDay = Int32.Parse(configTZExtended.StartHoursDay.Split(':')[0]);
+            configTZExtended.minutesStartDay = Int32.Parse(configTZExtended.StartHoursDay.Split(':')[1]);
         }
 
         public void SaveConfigToFile(ISavable configT) {
@@ -48,6 +49,7 @@ namespace autoTime.ViewModels
 
         private void doSaveCommand()
         {
+
             MessageBox.Show("Saving");
             if (configTZExtended != null) {
                 configTZExtended.saveToFile(configAPP); 
