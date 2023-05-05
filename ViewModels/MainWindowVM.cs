@@ -28,8 +28,6 @@ namespace autoTime.ViewModels
         public MainWindowVM() { 
             configAPP = ConfigAPP.initialize();
             configTZExtended = new ConfigTZExtended().readFromFile(configAPP);
-            //configTZExtended.hoursStartDay = Int32.Parse(configTZExtended.StartHoursDay.Split(':')[0]);
-            //configTZExtended.minutesStartDay = Int32.Parse(configTZExtended.StartHoursDay.Split(':')[1]);
         }
 
         public void SaveConfigToFile(ISavable configT) {
