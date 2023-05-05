@@ -49,8 +49,7 @@ namespace autoTime.ViewModels
 
         private void doSaveCommand()
         {
-
-            MessageBox.Show("Saving");
+            MessageBox.Show("Configuration saved!", "Configuration", MessageBoxButton.OK, MessageBoxImage.Information);
             if (configTZExtended != null) {
                 configTZExtended.saveToFile(configAPP); 
             }
