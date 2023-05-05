@@ -28,35 +28,35 @@
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label>Email</Label>
-                        <TextBox Margin="5,5,5,5" Height="20" Width="250" Text="{Binding configTZ.Email, Mode=TwoWay}"/>
+                        <TextBox Margin="5,5,5,5" Height="20" Width="250" Text="{Binding configTZExtended.Email, Mode=TwoWay}"/>
                     </StackPanel>
                     <Label FontSize="13" FontWeight="Bold">Выходные:</Label>
                     <WrapPanel Orientation="Horizontal" Margin="0,0,50,10">
-                        <CheckBox Margin="5,5,5,5" IsChecked="{Binding configTZ.isChekedDays[0], Mode=TwoWay}">Воскресенье</CheckBox>
-                        <CheckBox Margin="5,5,5,5" IsChecked="{Binding configTZ.isChekedDays[1], Mode=TwoWay}">Понедельник</CheckBox>
-                        <CheckBox Margin="5,5,5,5" IsChecked="{Binding configTZ.isChekedDays[2], Mode=TwoWay}">Вторник</CheckBox>
-                        <CheckBox Margin="5,5,5,5" IsChecked="{Binding configTZ.isChekedDays[3], Mode=TwoWay}">Среда</CheckBox>
-                        <CheckBox Margin="5,5,5,5" IsChecked="{Binding configTZ.isChekedDays[4], Mode=TwoWay}">Четверг</CheckBox>
-                        <CheckBox Margin="5,5,5,5" IsChecked="{Binding configTZ.isChekedDays[5], Mode=TwoWay}">Пятница</CheckBox>
-                        <CheckBox Margin="5,5,5,5" IsChecked="{Binding configTZ.isChekedDays[6], Mode=TwoWay}">Суббота</CheckBox>
+                        <CheckBox Margin="5,5,5,5" IsChecked="{Binding configTZExtended.isChekedDays[0], Mode=TwoWay}">Воскресенье</CheckBox>
+                        <CheckBox Margin="5,5,5,5" IsChecked="{Binding configTZExtended.isChekedDays[1], Mode=TwoWay}">Понедельник</CheckBox>
+                        <CheckBox Margin="5,5,5,5" IsChecked="{Binding configTZExtended.isChekedDays[2], Mode=TwoWay}">Вторник</CheckBox>
+                        <CheckBox Margin="5,5,5,5" IsChecked="{Binding configTZExtended.isChekedDays[3], Mode=TwoWay}">Среда</CheckBox>
+                        <CheckBox Margin="5,5,5,5" IsChecked="{Binding configTZExtended.isChekedDays[4], Mode=TwoWay}">Четверг</CheckBox>
+                        <CheckBox Margin="5,5,5,5" IsChecked="{Binding configTZExtended.isChekedDays[5], Mode=TwoWay}">Пятница</CheckBox>
+                        <CheckBox Margin="5,5,5,5" IsChecked="{Binding configTZExtended.isChekedDays[6], Mode=TwoWay}">Суббота</CheckBox>
                     </WrapPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,0,80,0">
                         <Label Margin="0,0,25,0">Начало рабочего дня</Label>
-                        <TextBox Width="20" Height="20" MaxLength="2" HorizontalAlignment="Stretch" Text="{Binding configTZ.hoursAndMin[0], Mode=TwoWay}"/>
+                        <TextBox Width="20" Height="20" MaxLength="2" HorizontalAlignment="Stretch" Text="{Binding configTZExtended.hoursAndMin[0], Mode=TwoWay}"/>
                         <Label>:</Label>
-                        <TextBox Width="20" Height="20"  MaxLength="2" HorizontalAlignment="Stretch" Text="{Binding configTZ.hoursAndMin[1], Mode=TwoWay}"/>
+                        <TextBox Width="20" Height="20"  MaxLength="2" HorizontalAlignment="Stretch" Text="{Binding configTZExtended.hoursAndMin[1], Mode=TwoWay}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Margin="0,0,25,0">Рабочий день (часов)</Label>
-                        <TextBox Width="20" Height="20" MaxLength="2" Text="{Binding configTZ.HoursDay, Mode=TwoWay}" />
+                        <TextBox Width="20" Height="20" MaxLength="2" Text="{Binding configTZExtended.HoursDay, Mode=TwoWay}" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label  Margin="0,0,15,0">Рабочая неделя (часов)</Label>
-                        <TextBox Width="50" Height="20" Text="{Binding configTZ.HoursWeekDay, Mode=TwoWay}"/>
+                        <TextBox Width="50" Height="20" Text="{Binding configTZExtended.HoursWeekDay, Mode=TwoWay}"/>
                     </StackPanel>
 
-                    <CheckBox Margin="0,15,0,0" IsChecked="{Binding configTZ.isTestedMode, Mode=TwoWay}">Тестовый режим</CheckBox>
-                    <Button Width="80" Margin="3">Сохранить</Button>
+                    <CheckBox Margin="0,15,0,0" IsChecked="{Binding configTZExtended.isTestedMode, Mode=TwoWay}">Тестовый режим</CheckBox>
+                    <Button Name="SaveTZ" Content="Сохранить" Command="{Binding SaveCommand}" Width="80" Margin="3"/> 
                 </StackPanel>
             </GroupBox>
             <Button Content="START"  FontWeight="Bold" Margin="0,50,0,0" />
