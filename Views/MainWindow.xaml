@@ -32,7 +32,7 @@
                     </StackPanel>
                     <Label FontSize="13" FontWeight="Bold">Выходные:</Label>
                     <WrapPanel Orientation="Horizontal" Margin="0,0,50,10">
-                        <CheckBox Margin="5,5,5,5" IsChecked="{Binding configTZ.isChekedDays[0], Mode=TwoWay}">Воскресение</CheckBox>
+                        <CheckBox Margin="5,5,5,5" IsChecked="{Binding configTZ.isChekedDays[0], Mode=TwoWay}">Воскресенье</CheckBox>
                         <CheckBox Margin="5,5,5,5" IsChecked="{Binding configTZ.isChekedDays[1], Mode=TwoWay}">Понедельник</CheckBox>
                         <CheckBox Margin="5,5,5,5" IsChecked="{Binding configTZ.isChekedDays[2], Mode=TwoWay}">Вторник</CheckBox>
                         <CheckBox Margin="5,5,5,5" IsChecked="{Binding configTZ.isChekedDays[3], Mode=TwoWay}">Среда</CheckBox>
