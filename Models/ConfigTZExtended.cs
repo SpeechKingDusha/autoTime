@@ -16,36 +16,6 @@ namespace autoTime.Models
         public int minutesStartDay { get; set; }
         public Dictionary<string, bool> areHolidays { get; set; } = new Dictionary<string, bool>() { { "Sunday", true }, {"Monday", false }, {"Tuesday", false },
                                                                                  {"Wednesday", false }, {"Thursday", false }, {"Friday", false }, {"Saturday", true } };
-    //public List<bool> isChekedDays
-    //    {
-    //        get
-    //        {
-    //            Dictionary<string, bool> days = new Dictionary<string, bool>() { { "Sunday", false }, {"Monday", false }, {"Tuesday", false },
-    //                                                                             {"Wednesday", false }, {"Thursday", false }, {"Friday", false }, {"Saturday", false } };
-    //            foreach (string holiday in base.Holidays)
-    //            {
-    //                days[holiday] = true;
-    //            }
-    //            List<bool> isChecked = days.Values.ToList();
-    //            return isChecked;
-    //        }
-    //        set
-    //        {
-    //            //Dictionary<int, string> days = new Dictionary<int, string>() { { 0, "Sunday" }, {1, "Monday"}, {2, "Tuesday"},
-    //            //                                                               {3, "Wednesday"}, {4, "Thursday"}, {5, "Friday"}, {6, "Saturday"} };
-    //            //List<string> holidaysRec = new List<string>();
-    //            //for (int i = 0; i < isChekedDays.Length; ++i)
-    //            //{
-    //            //    if (isChekedDays[i])
-    //            //    {
-    //            //        holidaysRec.Add(days[i]);
-    //            //    }
-    //            //}
-    //            //base.Holidays = holidaysRec;
-    //            isChekedDays = value;
-    //        }
-    //    }
-
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
@@ -62,8 +32,10 @@ namespace autoTime.Models
                 StartHoursDay = "08:30",
                 HoursDay = 8,
                 HoursWeekDay = 40,
-                isTestedMode = true
-            };
+                isTestedMode = true,
+                hoursStartDay = 8,
+                minutesStartDay = 30
+        };
         }
         public ConfigTZExtended readFromFile(ConfigAPP configAPP)
         {
@@ -82,6 +54,14 @@ namespace autoTime.Models
                 configTZExtended = defaultConfig();
                 Console.WriteLine(ex.Message);
             }
+            configTZExtended.hoursStartDay = Int32.Parse(configTZExtended.StartHoursDay.Split(':')[0]);
+            configTZExtended.minutesStartDay = Int32.Parse(configTZExtended.StartHoursDay.Split(':')[1]);
+
+            foreach (var holiday in configTZExtended.Holidays)
+            {
+                configTZExtended.areHolidays[holiday] = true;
+            }
+
             return configTZExtended;
         }
 
@@ -93,17 +73,8 @@ namespace autoTime.Models
             if (minutesStartDay < 9) startHoursDay.Append("0");
             startHoursDay.Append(minutesStartDay.ToString());
 
-
-            //Dictionary<int, string> days = new Dictionary<int, string>() { { 0, "Sunday" }, {1, "Monday"}, {2, "Tuesday"},
-            //                                                               {3, "Wednesday"}, {4, "Thursday"}, {5, "Friday"}, {6, "Saturday"} };
             List<string> holidaysRec = new List<string>();
-            //for (int i = 0; i < isChekedDays.Count; ++i)
-            //{
-            //    if (isChekedDays[i])
-            //    {
-            //        holidaysRec.Add(days[i]);
-            //    }
-            //}
+
             foreach (var day in areHolidays) {
                 if (day.Value) holidaysRec.Add(day.Key);
             
@@ -131,7 +102,6 @@ namespace autoTime.Models
             }
         }
 
-        //public string[] splitStartHoursDay() => StartHoursDay.Split(':');
     }
 }
 
