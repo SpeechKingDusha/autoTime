@@ -32,6 +32,7 @@ namespace autoTime.Models
 
                 configTSExt = JsonSerializer.Deserialize<ConfigTSExt>(jsonString);
                 reader.Close();
+                configTSExt.Password = uncodingPassword(configTSExt.Password);
             }
             catch (Exception ex)
             {
@@ -42,12 +43,50 @@ namespace autoTime.Models
 
             return configTSExt;
         }
+
+        private string encodingPassword() {
+            var passwordArray = base.Password.ToArray<char>();
+            var codeWord = Environment.MachineName.ToArray<char>();
+            int sumCodeWord = 0;
+
+            foreach (char c in codeWord)
+            {
+                sumCodeWord += c;
+            }
+
+            for (int i = 0; i < passwordArray.Length; ++i)
+            {
+                passwordArray[i] -= (char)sumCodeWord;
+                passwordArray[i] += 'a'; 
+            }
+        return new string(passwordArray);
+        }
+        private string uncodingPassword(string pas)
+        {
+            var newPas = pas.ToArray<char>();
+            var codeWord = Environment.MachineName.ToArray<char>();
+            int sumCodeWord = 0;
+
+            foreach (char c in codeWord)
+            {
+                sumCodeWord += c;
+            }
+
+            for (int i = 0; i < newPas.Length; ++i)
+            {
+                newPas[i] -= 'a';
+                newPas[i] += (char)sumCodeWord;
+                
+            }
+            return new string(newPas);
+        }
+
         public void saveToFile(ConfigAPP configAPP)
         {
             ConfigTS configTS = new ConfigTS()
             {
                 UserName = UserName,
-                Password = Password,
+                Password = encodingPassword(),
                 isTestedMode = isTestedMode
             };
 
