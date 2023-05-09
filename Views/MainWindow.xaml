@@ -86,7 +86,7 @@
                 <Run FontSize="11" Foreground="Black">Автоматическое заполнение рабочих часов в приложении Time Sheet (BI-Telco). </Run>
                 </TextBlock>
             </StackPanel>
-            <Button Background="Gray" Content="START" Foreground="White" FontWeight="Bold"  Margin="0,50,0,0"/>
+            <Button Background="Gray" Content="START" Foreground="White" FontWeight="Bold"  Margin="0,50,0,0" Command="{Binding StartCommand}" CommandParameter="{Binding configAPP.NameProcessTS}"/>
         </StackPanel>
     </Grid>
 </Window>

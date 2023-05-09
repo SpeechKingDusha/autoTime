@@ -1,6 +1,7 @@
 ﻿using autoTime.Core;
 using autoTime.Models;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
@@ -69,7 +70,8 @@ namespace autoTime.ViewModels
         {
             try
             {
-                System.Diagnostics.Process.Start(configAPP.PathBin + param);
+                
+               Process.Start(configAPP.PathBin.Replace('/', '\\') + param);
             }
             catch (System.Exception)
             {
