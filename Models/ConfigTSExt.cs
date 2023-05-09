@@ -15,6 +15,7 @@ namespace autoTime.Models
         {
             return new ConfigTSExt()
             {
+                DomainName = @"Bell-main\",
                 UserName = "Example",
                 Password = "Password",
                 IsVisiblePass = false,
@@ -85,6 +86,7 @@ namespace autoTime.Models
         {
             ConfigTS configTS = new ConfigTS()
             {
+                DomainName = DomainName,
                 UserName = UserName,
                 Password = encodingPassword(),
                 isTestedMode = isTestedMode
