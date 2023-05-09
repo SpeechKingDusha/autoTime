@@ -32,40 +32,25 @@ namespace autoTime.ViewModels
         public ICommand SaveCommand { 
             get
             {
-                return new ActionCommand(() =>
+                return new ActionCommand((obj) =>
                 {
-                    doSaveCommand();
-                });
-
-            }
-        }
-        public ICommand SaveCommand2
-        {
-            get
-            {
-                return new ActionCommand(() =>
-                {
-                    doSaveCommand2();
+                    doSaveCommand(obj);
                 });
 
             }
         }
 
-        private void doSaveCommand()
+        private void doSaveCommand(ISavable param)
         {
-            MessageBox.Show("Configuration saved!", "Configuration", MessageBoxButton.OK, MessageBoxImage.Information);
-            if (configTZExtended != null) {
-                configTZExtended.saveToFile(configAPP); 
-            }
-        }
-        private void doSaveCommand2()
-        {
-            MessageBox.Show("Configuration saved!", "Configuration", MessageBoxButton.OK, MessageBoxImage.Information);
-            if (configTSExt != null)
+            try
             {
-                configTSExt.saveToFile(configAPP);
+                param.saveToFile(configAPP);
+                MessageBox.Show("Configuration saved!", "Configuration", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+            catch (System.Exception)
+            {
+                MessageBox.Show("Configuration was not saved!", "Configuration", MessageBoxButton.OK, MessageBoxImage.Error);
+            } 
         }
-
     }
 }

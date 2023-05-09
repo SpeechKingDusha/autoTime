@@ -1,13 +1,14 @@
-﻿using System;
+﻿using autoTime.Models;
+using System;
 using System.Windows.Input;
 
 namespace autoTime.Core
 {
-    internal class ActionCommand : ICommand
+    public class ActionCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
-        private readonly Action action;
-        public ActionCommand(Action action)
+        private readonly Action<ISavable> action;
+        public ActionCommand(Action<ISavable> action)
         {
             this.action = action;
         }
@@ -19,7 +20,8 @@ namespace autoTime.Core
 
         public void Execute(object parameter)
         {
-            action();
+
+            action((ISavable)parameter);
         }
     }
 }

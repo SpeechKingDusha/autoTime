@@ -8,7 +8,7 @@ using System.Text.Json;
 
 namespace autoTime.Models
 {
-    public class ConfigTZExtended: ConfigTZ, INotifyPropertyChanged
+    public class ConfigTZExtended: ConfigTZ, INotifyPropertyChanged, ISavable
     {
         public int hoursStartDay { get; set; }
         public int minutesStartDay { get; set; }

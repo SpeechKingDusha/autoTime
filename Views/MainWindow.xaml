@@ -56,7 +56,7 @@
                     </StackPanel>
 
                     <CheckBox Margin="0,15,0,0" IsChecked="{Binding configTZExtended.isTestedMode, Mode=TwoWay}">Тестовый режим</CheckBox>
-                    <Button Name="SaveTZ" Content="Сохранить" Command="{Binding SaveCommand}"  Width="80" Margin="3"/> 
+                    <Button Name="SaveTZ" Content="Сохранить" Command="{Binding SaveCommand}" CommandParameter="{Binding configTZExtended}" Width="80" Margin="3"/> 
                 </StackPanel>
             </GroupBox>
             <Button Content="START"  FontWeight="Bold" Margin="0,50,0,0" />
@@ -78,7 +78,7 @@
 
 
                     <CheckBox IsChecked="{Binding configTSExt.isTestedMode, Mode=TwoWay}" Margin="0,15,0,0">Тестовый режим</CheckBox>
-                    <Button Command="{Binding SaveCommand2}" Content="Сохранить" Width="80" Margin="3"/>
+                    <Button Command="{Binding SaveCommand}" CommandParameter="{Binding configTSExt}" Content="Сохранить" Width="80" Margin="3"/>
                 </StackPanel>
             </GroupBox>
             <StackPanel  Background="LightGray" Margin="0,10,0,10" >
