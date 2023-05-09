@@ -59,7 +59,7 @@
                     <Button Name="SaveTZ" Content="Сохранить" Command="{Binding SaveCommand}" CommandParameter="{Binding configTZExtended}" Width="80" Margin="3"/> 
                 </StackPanel>
             </GroupBox>
-            <Button Content="START"  FontWeight="Bold" Margin="0,50,0,0" />
+            <Button Content="START"  FontWeight="Bold" Margin="0,50,0,0" Command="{Binding StartCommand}" CommandParameter="{Binding configAPP.NameProcessTZ}" />
         </StackPanel>
         <StackPanel Grid.Column="1" Margin="20,20,20,20" >
             <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center">

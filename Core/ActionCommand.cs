@@ -7,8 +7,8 @@ namespace autoTime.Core
     public class ActionCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
-        private readonly Action<ISavable> action;
-        public ActionCommand(Action<ISavable> action)
+        private readonly Action<Object> action;
+        public ActionCommand(Action<Object> action)
         {
             this.action = action;
         }
@@ -21,7 +21,7 @@ namespace autoTime.Core
         public void Execute(object parameter)
         {
 
-            action((ISavable)parameter);
+            action(parameter);
         }
     }
 }

@@ -34,7 +34,19 @@ namespace autoTime.ViewModels
             {
                 return new ActionCommand((obj) =>
                 {
-                    doSaveCommand(obj);
+                    doSaveCommand(obj as ISavable);
+                });
+
+            }
+        }
+
+        public ICommand StartCommand
+        {
+            get
+            {
+                return new ActionCommand((obj) =>
+                {
+                    doStartCommand(obj as string);
                 });
 
             }
@@ -51,6 +63,20 @@ namespace autoTime.ViewModels
             {
                 MessageBox.Show("Configuration was not saved!", "Configuration", MessageBoxButton.OK, MessageBoxImage.Error);
             } 
+        }
+
+        private void doStartCommand(string param)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start(configAPP.PathBin + param);
+            }
+            catch (System.Exception)
+            {
+
+                MessageBox.Show("File " + param + " not found", "Execute process", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            
         }
     }
 }
