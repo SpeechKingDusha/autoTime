@@ -93,6 +93,8 @@
     </Compile>
     <Compile Include="Core\ActionCommand.cs" />
     <Compile Include="Models\ConfigAPP.cs" />
+    <Compile Include="Models\ConfigTS.cs" />
+    <Compile Include="Models\ConfigTSExt.cs" />
     <Compile Include="Models\ConfigTZ.cs" />
     <Compile Include="Models\ConfigTZExtended.cs" />
     <Compile Include="Models\ISavable.cs" />
