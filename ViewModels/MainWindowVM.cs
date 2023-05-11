@@ -81,7 +81,7 @@ namespace autoTime.ViewModels
         private void doHelpCommand(string param)
         {
             MessageBox.Show("Если отмечен \"Тестовый режим\", приложения автоматически заполняют и сохраняют данные, " +
-                "но без Aprove. Это дает вам возможность еще раз проверить и отправить данные вручную ", "Справка", MessageBoxButton.OK, MessageBoxImage.Information);
+                "но без Approve. Это дает вам возможность еще раз проверить и отправить данные вручную ", "Справка", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void doStartCommand(string param)
