@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:autoTime.ViewModels"
         mc:Ignorable="d"
-        Title="Auto Time" Height="600" Width="800" MinHeight="500" MinWidth="750">
+        Title="Auto Time v1.01" Height="600" Width="800" MinHeight="500" MinWidth="750">
 
     <Window.DataContext>
         <local:MainWindowVM/>
@@ -15,7 +15,11 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*"  />
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0"  Margin="20,20,20,20" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0" Grid.Row="1" Margin="20,20,20,20" >
             <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center">
             <Run FontSize="20" Foreground="Red" FontWeight="Bold">Time Zone</Run>
             </TextBlock>
@@ -61,7 +65,18 @@
             </GroupBox>
             <Button Content="START"  FontWeight="Bold" Margin="0,50,0,0" Command="{Binding StartCommand}" CommandParameter="{Binding configAPP.NameProcessTZ}" />
         </StackPanel>
-        <StackPanel Grid.Column="1" Margin="20,20,20,20" >
+        <StackPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Background="AliceBlue" >
+            <Button BorderThickness="0" 
+                    Padding="10,5,10,5" 
+                    FontSize="10" 
+                    HorizontalAlignment="Right"   
+                    Foreground="Blue" 
+                    Margin="15,15,25,5" 
+                    FontWeight="Bold" 
+                    Content="Справка"
+                    Command="{Binding HelpCommand}"/> 
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="1" Margin="20,20,20,20" >
             <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center">
             <Run FontSize="20" Foreground="Red" FontWeight="Bold">Time Sheet</Run>
             </TextBlock>
@@ -75,8 +90,6 @@
                         <Label>Password</Label>
                         <TextBox Text="{Binding configTSExt.Password, Mode=TwoWay}" Margin="9,5,5,5" Height="20" Width="250" Name="password" />
                     </StackPanel>
-
-
                     <CheckBox IsChecked="{Binding configTSExt.isTestedMode, Mode=TwoWay}" Margin="0,15,0,0">Тестовый режим</CheckBox>
                     <Button Command="{Binding SaveCommand}" CommandParameter="{Binding configTSExt}" Content="Сохранить" Width="80" Margin="3"/>
                 </StackPanel>

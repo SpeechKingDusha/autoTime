@@ -53,6 +53,18 @@ namespace autoTime.ViewModels
             }
         }
 
+        public ICommand HelpCommand
+        {
+            get
+            {
+                return new ActionCommand((obj) =>
+                {
+                    doHelpCommand(obj as string);
+                });
+
+            }
+        }
+
         private void doSaveCommand(ISavable param)
         {
             try
@@ -64,6 +76,12 @@ namespace autoTime.ViewModels
             {
                 MessageBox.Show("Configuration was not saved!", "Configuration", MessageBoxButton.OK, MessageBoxImage.Error);
             } 
+        }
+
+        private void doHelpCommand(string param)
+        {
+            MessageBox.Show("Если отмечен \"Тестовый режим\", приложения автоматически заполняют и сохраняют данные, " +
+                "но без Aprove. Это дает вам возможность еще раз проверить и отправить данные вручную ", "Справка", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void doStartCommand(string param)
