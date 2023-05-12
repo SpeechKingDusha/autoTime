@@ -33,7 +33,7 @@ namespace autoTime.Models
 
                 configTSExt = JsonSerializer.Deserialize<ConfigTSExt>(jsonString);
                 reader.Close();
-                configTSExt.Password = uncodingPassword(configTSExt.Password);
+                configTSExt.Password = DecodingPassword(configTSExt.Password);
             }
             catch (Exception ex)
             {
@@ -62,7 +62,7 @@ namespace autoTime.Models
             }
         return new string(passwordArray);
         }
-        private string uncodingPassword(string pas)
+        private string DecodingPassword(string pas)
         {
             var newPas = pas.ToArray<char>();
             var codeWord = Environment.MachineName.ToArray<char>();
