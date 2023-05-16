@@ -2,6 +2,7 @@
 using autoTime.Models;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Diagnostics.Eventing.Reader;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
@@ -41,18 +42,6 @@ namespace autoTime.ViewModels
             }
         }
 
-        public ICommand StartCommand
-        {
-            get
-            {
-                return new ActionCommand((obj) =>
-                {
-                    doStartCommand(obj as string);
-                });
-
-            }
-        }
-
         public ICommand HelpCommand
         {
             get
@@ -86,6 +75,7 @@ namespace autoTime.ViewModels
 
         private void doStartCommand(string param)
         {
+            doSaveCommand(getObj(param));
             try
             {
                 
@@ -97,6 +87,13 @@ namespace autoTime.ViewModels
                 MessageBox.Show("File " + param + " not found", "Execute process", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             
+        }
+
+        private ISavable getObj (string Name)
+        {
+            if (Name.Equals("autoTimeZonePortable.exe")) return configTSExt;
+           
+            return configTZExtended;
         }
     }
 }

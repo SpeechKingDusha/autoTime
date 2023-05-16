@@ -10,7 +10,7 @@ using System.Windows;
 [assembly: AssemblyTitle("autoTime")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Amdocs")]
 [assembly: AssemblyProduct("autoTime")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]

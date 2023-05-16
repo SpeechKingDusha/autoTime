@@ -62,7 +62,7 @@
                     </StackPanel>
 
                     <CheckBox Margin="0,15,0,0" IsChecked="{Binding configTZExtended.isTestedMode, Mode=TwoWay}">Тестовый режим</CheckBox>
-                    <Button Name="SaveTZ" Content="Сохранить" Command="{Binding SaveCommand}" CommandParameter="{Binding configTZExtended}" Width="80" Margin="3"/> 
+                   
                 </StackPanel>
             </GroupBox>
             <Button Content="START"  FontWeight="Bold" Margin="0,30,0,0" Command="{Binding StartCommand}" CommandParameter="{Binding configAPP.NameProcessTZ}" />
@@ -93,7 +93,6 @@
                         <TextBox Text="{Binding configTSExt.Password, Mode=TwoWay}" Margin="9,5,5,5" Height="20" Width="250" Name="password" />
                     </StackPanel>
                     <CheckBox IsChecked="{Binding configTSExt.isTestedMode, Mode=TwoWay}" Margin="0,15,0,0">Тестовый режим</CheckBox>
-                    <Button Command="{Binding SaveCommand}" CommandParameter="{Binding configTSExt}" Content="Сохранить" Width="80" Margin="3"/>
                 </StackPanel>
             </GroupBox>
             <StackPanel  Background="LightGray" Margin="0,10,0,10" >
