@@ -91,9 +91,9 @@ namespace autoTime.ViewModels
 
         private ISavable getObj (string Name)
         {
-            if (Name.Equals("autoTimeZonePortable.exe")) return configTSExt;
+            if (Name.Equals("autoTimeZonePortable.exe")) return configTZExtended;
            
-            return configTZExtended;
+            return configTSExt;
         }
     }
 }
