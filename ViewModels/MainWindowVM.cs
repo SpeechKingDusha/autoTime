@@ -31,12 +31,14 @@ namespace autoTime.ViewModels
             configT.saveToFile(configAPP);
         }
 
-        public ICommand SaveCommand { 
+
+        public ICommand StartCommand
+        {
             get
             {
                 return new ActionCommand((obj) =>
                 {
-                    doSaveCommand(obj as ISavable);
+                    doStartCommand(obj as string);
                 });
 
             }
