@@ -33,7 +33,7 @@ namespace autoTime.Models
 
                 configTSExt = JsonSerializer.Deserialize<ConfigTSExt>(jsonString);
                 reader.Close();
-                //configTSExt.Password = DecodingPassword(configTSExt.Password);
+                configTSExt.Password = DecodingPassword(configTSExt.Password);
             }
             catch (Exception ex)
             {
@@ -88,8 +88,7 @@ namespace autoTime.Models
             {
                 DomainName = DomainName,
                 UserName = UserName,
-                //Password = encodingPassword(),
-                Password = Password,
+                Password = encodingPassword(),
                 isTestedMode = isTestedMode
             };
 
