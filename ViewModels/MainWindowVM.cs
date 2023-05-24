@@ -61,7 +61,7 @@ namespace autoTime.ViewModels
             try
             {
                 param.saveToFile(configAPP);
-                MessageBox.Show("Configuration saved!", "Configuration", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Configuration saved! \nWait...\nPress OK to run!", "Starting", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (System.Exception)
             {
