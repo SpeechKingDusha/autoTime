@@ -8,9 +8,9 @@ namespace autoTime.Models
 {
     public class ConfigTS
     {
-        public string DomainName { get; set; }
-        public string UserName { get; set; }
-        public string  Password { get; set; }
+        public string domainName { get; set; }
+        public string userName { get; set; }
+        public string  password { get; set; }
         public bool isTestedMode { get; set; }
     }
 }

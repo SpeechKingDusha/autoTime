@@ -21,7 +21,7 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Column="0" Grid.Row="1" Margin="20,20,20,20" >
             <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center">
-            <Run FontSize="20" Foreground="Red" FontWeight="Bold">Time Zone</Run>
+            <Run FontSize="20" Foreground="Red" FontWeight="Bold">Time Zone (F5 VPN)</Run>
             </TextBlock>
             <StackPanel  Background="LightGray" Margin="0,10,0,10" >
                 <TextBlock TextWrapping="Wrap" Padding="10,10,10,10" >
@@ -80,17 +80,17 @@
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="1" Margin="20,20,20,20" >
             <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center">
-            <Run FontSize="20" Foreground="Red" FontWeight="Bold">Time Sheet</Run>
+            <Run FontSize="20" Foreground="Red" FontWeight="Bold">Time Sheet(Cisco VPN)</Run>
             </TextBlock>
             <GroupBox Header="Конфигурация" Padding="5">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label>Username</Label>
-                        <TextBox Text="{Binding configTSExt.UserName, Mode=TwoWay}" Margin="5,5,5,5" Height="20" Width="250" Name="username"/>
+                        <TextBox Text="{Binding configTSExt.userName, Mode=TwoWay}" Margin="5,5,5,5" Height="20" Width="250" Name="username"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label>Password</Label>
-                        <TextBox Text="{Binding configTSExt.Password, Mode=TwoWay}" Margin="9,5,5,5" Height="20" Width="250" Name="password" />
+                        <TextBox Text="{Binding configTSExt.password, Mode=TwoWay}" Margin="9,5,5,5" Height="20" Width="250" Name="password" />
                     </StackPanel>
                     <CheckBox IsChecked="{Binding configTSExt.isTestedMode, Mode=TwoWay}" Margin="0,15,0,0">Тестовый режим</CheckBox>
                 </StackPanel>

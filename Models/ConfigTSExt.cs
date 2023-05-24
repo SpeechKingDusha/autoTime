@@ -15,9 +15,9 @@ namespace autoTime.Models
         {
             return new ConfigTSExt()
             {
-                DomainName = @"Bell-main\",
-                UserName = "Example",
-                Password = "Password",
+                domainName = @"Bell-main\",
+                userName = "Example",
+                password = "password",
                 IsVisiblePass = false,
                 isTestedMode = true
             };
@@ -33,8 +33,8 @@ namespace autoTime.Models
 
                 configTSExt = JsonSerializer.Deserialize<ConfigTSExt>(jsonString);
                 reader.Close();
-                //configTSExt.Password = DecodingPassword(configTSExt.Password);
-                configTSExt.Password = configTSExt.Password;
+                //configTSExt.password = DecodingPassword(configTSExt.password);
+                configTSExt.password = configTSExt.password;
             }
             catch (Exception ex)
             {
@@ -47,7 +47,7 @@ namespace autoTime.Models
         }
 
         private string encodingPassword() {
-            var passwordArray = base.Password.ToArray<char>();
+            var passwordArray = base.password.ToArray<char>();
             var codeWord = Environment.MachineName.ToArray<char>();
             int sumCodeWord = 0;
 
@@ -87,10 +87,10 @@ namespace autoTime.Models
         {
             ConfigTS configTS = new ConfigTS()
             {
-                DomainName = DomainName,
-                UserName = UserName,
-                //Password = encodingPassword(),
-                Password = Password,
+                domainName = domainName,
+                userName = userName,
+                //password = encodingPassword(),
+                password = password,
                 isTestedMode = isTestedMode
             };
 
