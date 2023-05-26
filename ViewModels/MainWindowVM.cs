@@ -28,7 +28,7 @@ namespace autoTime.ViewModels
             configAPP = ConfigAPP.initialize();
             configTZExtended = new ConfigTZExtended().readFromFile(configAPP);
             configTSExt = new ConfigTSExt().readFromFile(configAPP);
-            new WebDriverManager.DriverManager().SetUpDriver(new EdgeConfig());
+           // new WebDriverManager.DriverManager().SetUpDriver(new EdgeConfig());
         }
 
         public void SaveConfigToFile(ISavable configT) {
