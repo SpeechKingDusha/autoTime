@@ -1,11 +1,14 @@
 ﻿using autoTime.Core;
 using autoTime.Models;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Edge;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Diagnostics.Eventing.Reader;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
+using WebDriverManager.DriverConfigs.Impl;
 
 namespace autoTime.ViewModels
 {
@@ -25,6 +28,7 @@ namespace autoTime.ViewModels
             configAPP = ConfigAPP.initialize();
             configTZExtended = new ConfigTZExtended().readFromFile(configAPP);
             configTSExt = new ConfigTSExt().readFromFile(configAPP);
+            new WebDriverManager.DriverManager().SetUpDriver(new EdgeConfig());
         }
 
         public void SaveConfigToFile(ISavable configT) {
